@@ -7,22 +7,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.careydevelopment.masculex.jpa.entity.Post;
-import com.careydevelopment.masculex.jpa.repository.PostRepository;
+import com.careydevelopment.masculex.jpa.entity.Context;
+import com.careydevelopment.masculex.jpa.repository.ContextRepository;
 
 @Controller
 public class IndexController {
 	
 	@Autowired
-	PostRepository postRepository;
+	ContextRepository contextRepository;
 
-    @RequestMapping(value = "/{context}", method=RequestMethod.GET)
-    public String youtubeDemo(@PathVariable String context, Model model) {
+    @RequestMapping(value = "/{contextName}", method=RequestMethod.GET)
+    public String index(@PathVariable String contextName, Model model) {
     	
-    	Post p = postRepository.fetchBySlug("the_20_best_5.11_men's_polo_shirts");
-    	System.err.println("The id is " + p.getId());
+    	Context context = contextRepository.fetchByName(contextName);
+    	model.addAttribute("logoUrl", context.getLogoUrl());
+    	model.addAttribute("homeUrl", context.getHomeUrl());
     	
-        return context + "/index";
+    	System.err.println("home url is " + context.getHomeUrl());
+    	
+        return "index";
     }
 	
 }
