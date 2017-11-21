@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class BlogController {
 
     @RequestMapping(value = "/{context}/blog", method=RequestMethod.GET)
-    public String youtubeDemo(@PathVariable String context, Model model) {
-        return context + "/blog";
+    public String blog(@PathVariable String context, Model model) {
+        return "blog";
     }
 	
 }
