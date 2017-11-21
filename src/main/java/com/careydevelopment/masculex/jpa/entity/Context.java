@@ -25,6 +25,24 @@ public class Context {
 	@Column(name="homeUrl")
 	private String homeUrl;
 
+	@Column(name="title")
+	private String title;
+	
+	@Column(name="tagline")
+	private String tagline;
+
+	@Column(name="header1")
+	private String header1;
+	
+	@Column(name="header2")
+	private String header2;
+	
+	@Column(name="splash")
+	private String splash;
+	
+	@Column(name="faviconUrl")
+	private String faviconUrl;
+	
 	public Long getId() {
 		return id;
 	}
@@ -57,4 +75,51 @@ public class Context {
 		this.name = name;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getTagline() {
+		return tagline;
+	}
+
+	public void setTagline(String tagline) {
+		this.tagline = tagline;
+	}
+
+	public String getHeader1() {
+		return header1;
+	}
+
+	public void setHeader1(String header1) {
+		this.header1 = header1;
+	}
+
+	public String getHeader2() {
+		return header2;
+	}
+
+	public void setHeader2(String header2) {
+		this.header2 = header2;
+	}
+
+	public String getSplash() {
+		return splash;
+	}
+
+	public void setSplash(String splash) {
+		this.splash = splash;
+	}
+
+	public String getFaviconUrl() {
+		return faviconUrl;
+	}
+
+	public void setFaviconUrl(String faviconUrl) {
+		this.faviconUrl = faviconUrl;
+	}
 }

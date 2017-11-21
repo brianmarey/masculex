@@ -20,10 +20,7 @@ public class IndexController {
     public String index(@PathVariable String contextName, Model model) {
     	
     	Context context = contextRepository.fetchByName(contextName);
-    	model.addAttribute("logoUrl", context.getLogoUrl());
-    	model.addAttribute("homeUrl", context.getHomeUrl());
-    	
-    	System.err.println("home url is " + context.getHomeUrl());
+    	model.addAttribute("webContext", context);
     	
         return "index";
     }
