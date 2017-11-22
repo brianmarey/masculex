@@ -16,7 +16,8 @@
 
 			<div class="col_half">
 				Copyright &copy; 2018<br/>
-				<div class="copyright-links"><a th:href="${webContext.homeUrl}">Home</a> / <a th:href="${webContext.homeUrl + '/blog'}">Blog</a></div>
+				
+				<div class="copyright-links" th:if="${webContext != null}"><a th:href="${webContext.homeUrl}">Home</a> / <a th:href="${webContext.homeUrl + '/blog'}">Blog</a></div>
 			</div>
 
 			<div class="col_half col_last tright">

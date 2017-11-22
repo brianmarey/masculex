@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- Document Title
+	============================================= -->
+	<title>404</title>
+
+	<object th:include="fragments/head :: head" th:remove="tag"></object></head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+	<div th:include="fragments/header :: outerheader" th:remove="tag"></div>
+
+		<!-- Page Title
+		============================================= -->
+		<section id="page-title">
+
+			<div class="container clearfix">
+				<h1>Page Not Found</h1>
+			</div>
+
+		</section><!-- #page-title end -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+
+			<div class="content-wrap">
+
+				<div class="container clearfix">
+
+					<div class="col_half nobottommargin">
+						<div class="error404 center">404</div>
+					</div>
+
+					<div class="col_half nobottommargin col_last">
+
+						<div class="heading-block nobottomborder">
+							<h4>Ooopps! The Page you were looking for couldn't be found.</h4>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section><!-- #content end -->
+
+		<div th:include="fragments/footer :: outerfooter" th:remove="tag"></div>
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<div th:include="fragments/includes :: includes" th:remove="tag"></div>
+
+</body>
+</html>

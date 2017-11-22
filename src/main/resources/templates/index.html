@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
-
-	<object th:include="fragments/head :: head" th:remove="tag"></object>
-	
 	<!-- Document Title
 	============================================= -->
 	<title th:text="${webContext.title + ' | ' + webContext.tagline}"></title>
+	<meta name="description" th:content="${webContext.title + ': ' + webContext.tagline}" />
 
+	<object th:include="fragments/head :: head" th:remove="tag"></object>
 </head>
 
 <body class="stretched">
@@ -44,7 +43,7 @@
 
 						<div class="col-lg-5">
 							<div class="heading-block topmargin">
-								<h1><span th:text="${webContext.header1}"></span><br/><span th:text="${webContext.header2}">MultiPurpose Template.</span></h1>
+								<h1><span th:text="${webContext.header1}"></span><br/><span th:text="${webContext.header2}"></span></h1>
 							</div>
 							<p class="lead" th:text="${webContext.splash}"></p>
 						</div>
@@ -60,7 +59,7 @@
 
 				<a th:href="${webContext.homeUrl + '/blog'}" class="button button-full center tright footer-stick">
 					<div class="container clearfix">
-						Be sure to check out our blog. <strong>Click Here</strong> <i class="icon-caret-right" style="top:4px;"></i>
+						<strong>Click Here</strong> to read the latest articles on our blog.<i class="icon-caret-right" style="top:4px;"></i>
 					</div>
 				</a>
 

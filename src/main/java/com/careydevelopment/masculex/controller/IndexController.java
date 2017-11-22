@@ -20,9 +20,13 @@ public class IndexController {
     public String index(@PathVariable String contextName, Model model) {
     	
     	Context context = contextRepository.fetchByName(contextName);
-    	model.addAttribute("webContext", context);
     	
-        return "index";
+    	if (context == null) {
+    		return "404";
+    	} else {
+        	model.addAttribute("webContext", context);        	
+            return "index";
+    	}    	
     }
 	
 }

@@ -19,9 +19,6 @@ public class Context {
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="logoUrl")
-	private String logoUrl;
-	
 	@Column(name="homeUrl")
 	private String homeUrl;
 
@@ -40,23 +37,12 @@ public class Context {
 	@Column(name="splash")
 	private String splash;
 	
-	@Column(name="faviconUrl")
-	private String faviconUrl;
-	
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getLogoUrl() {
-		return logoUrl;
-	}
-
-	public void setLogoUrl(String logoUrl) {
-		this.logoUrl = logoUrl;
 	}
 
 	public String getHomeUrl() {
@@ -113,13 +99,5 @@ public class Context {
 
 	public void setSplash(String splash) {
 		this.splash = splash;
-	}
-
-	public String getFaviconUrl() {
-		return faviconUrl;
-	}
-
-	public void setFaviconUrl(String faviconUrl) {
-		this.faviconUrl = faviconUrl;
 	}
 }
