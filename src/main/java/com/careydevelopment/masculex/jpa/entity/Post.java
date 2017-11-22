@@ -108,4 +108,16 @@ public class Post {
 		
 		return display;
 	}
+	
+	
+	public String getSchemaDateDisplay() {
+		String display = "";
+		
+		if (date != null) {
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			display = df.format(date);
+		}
+		
+		return display;
+	}
 }

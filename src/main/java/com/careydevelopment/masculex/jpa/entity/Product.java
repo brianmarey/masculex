@@ -113,4 +113,15 @@ public class Product {
 		
 		return priceRange;
 	}
+	
+	public float getLowestPriceDecimal() {
+		float price = 0f;
+		
+		if (lowestPrice != null) {
+			String withoutDollar = lowestPrice.substring(1, lowestPrice.length());
+			price = Float.parseFloat(withoutDollar);
+		}
+		
+		return price;
+	}
 }

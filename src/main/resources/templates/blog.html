@@ -6,8 +6,7 @@
 	
 	<!-- Document Title
 	============================================= -->
-	<title>Blog - Small Thumbs | Canvas</title>
-
+	<title th:text="${'Blog | ' + webContext.title}"></title>
 </head>
 
 <body class="stretched">
@@ -24,11 +23,7 @@
 
 			<div class="container clearfix">
 				<h1>Blog</h1>
-				<span>Our Latest News</span>
-				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li class="active">Blog</li>
-				</ol>
+				<span>Our Latest "Best Of" Lists</span>
 			</div>
 
 		</section><!-- #page-title end -->
@@ -44,86 +39,39 @@
 					<!-- Posts
 					============================================= -->
 					<div id="posts" class="small-thumbs">
-
-						<div class="entry clearfix">
-							<div class="entry-image">
-								<a th:href="@{/images/blog/full/17.jpg}" data-lightbox="image"><img class="image_fade" th:src="@{/images/blog/small/17.jpg}" alt="Standard Post with Image"/></a>
-							</div>
-							<div class="entry-c">
-								<div class="entry-title">
-									<h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
-								</div>
-								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i> 10th February 2014</li>
-									<li><a href="#"><i class="icon-user"></i> admin</a></li>
-									<li><i class="icon-folder-open"></i> <a href="#">General</a>, <a href="#">Media</a></li>
-									<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-									<li><a href="#"><i class="icon-camera-retro"></i></a></li>
-								</ul>
-								<div class="entry-content">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus voluptate id aperiam ea ipsum magni aut perspiciatis rem voluptatibus officia eos rerum deleniti quae nihil facilis repellat atque vitae voluptatem libero at eveniet veritatis ab facere.</p>
-									<a href="blog-single.html" class="more-link">Read More</a>
-								</div>
-							</div>
-						</div>
-
-					   <div class="entry clearfix">
-							<div class="entry-image">
-								<iframe src="http://player.vimeo.com/video/87701971" width="500" height="281" frameborder="0"></iframe>
-							</div>
-							<div class="entry-c">
-								<div class="entry-title">
-									<h2><a href="blog-single-full.html">This is a Standard post with an Embedded Video</a></h2>
-								</div>
-								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i> 16th February 2014</li>
-									<li><a href="#"><i class="icon-user"></i> admin</a></li>
-									<li><i class="icon-folder-open"></i> <a href="#">Videos</a>, <a href="#">News</a></li>
-									<li><a href="blog-single-full.html#comments"><i class="icon-comments"></i> 19</a></li>
-									<li><a href="#"><i class="icon-film"></i></a></li>
-								</ul>
-								<div class="entry-content">
-									<p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis placeat quo unde reprehenderit eum facilis vitae.</p>
-									<a href="blog-single-full.html" class="more-link">Read More</a>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="entry clearfix">
-							<div class="entry-c">
-								<div class="entry-image">
-									<a href="http://themeforest.net" class="entry-link" target="_blank">
-										Themeforest.net
-										<span>- http://themeforest.net</span>
-									</a>
-								</div>
-								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i> 17th March 2014</li>
-									<li><a href="#"><i class="icon-user"></i> admin</a></li>
-									<li><i class="icon-folder-open"></i> <a href="#">Links</a>, <a href="#">Suggestions</a></li>
-									<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 26</a></li>
-									<li><a href="#"><i class="icon-link"></i></a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="entry clearfix">
-							<div class="entry-c">
-								<div class="entry-image">
-									<div class="panel panel-default">
-										<div class="panel-body">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, fuga optio voluptatibus saepe tenetur aliquam debitis eos accusantium! Vitae, hic, atque aliquid repellendus accusantium laudantium minus eaque quibusdam ratione sapiente.
-										</div>
+						<div th:each="post : ${posts}">
+							<div class="entry clearfix" itemscope="true" itemtype="http://schema.org/Article">
+								<div style="display:none">
+									<span itemprop="name" th:text="${post.title}"></span>
+									<link itemprop="mainEntityOfPage" th:href="${webContext.homeUrl + '/post/' + post.slug}" />
+									<span itemprop="url" th:text="${webContext.homeUrl + '/post/' + post.slug}"></span>
+									<span itemprop="datePublished" th:content="${post.schemaDateDisplay}" th:text="${post.schemaDateDisplay}"></span>
+									<span itemprop="dateModified" th:content="${post.schemaDateDisplay}" th:text="${post.schemaDateDisplay}"></span>
+									<span itemprop="author" th:text="${webContext.title}"></span>
+									<span itemprop="headline" th:text="${post.title}"></span>
+									<span itemprop="image" th:if="${post.products[0].imageUrl != null}" th:text="${post.products[0].imageUrl}"></span>
+									<div itemtype="https://schema.org/Organization" itemscope="true" itemprop="publisher">
+										<link itemprop="url" th:href="${webContext.homeUrl}"/> 
+										<span itemprop="name" th:text="${webContext.title}"></span>
+										<span itemprop="logo" itemscope="true" itemtype="https://schema.org/ImageObject">
+											<meta itemprop="url" th:content="${webContext.homeUrl + '/images/logo.png'}"/>
+										</span>
 									</div>
 								</div>
-								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i> 21st March 2014</li>
-									<li><a href="#"><i class="icon-user"></i> admin</a></li>
-									<li><i class="icon-folder-open"></i> <a href="#">Status</a>, <a href="#">News</a></li>
-									<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 11</a></li>
-									<li><a href="#"><i class="icon-align-justify2"></i></a></li>
-								</ul>
+								<div class="entry-image" th:if="${post.products[0].imageUrl != null}">
+									<a th:href="${webContext.homeUrl + '/post/' + post.slug}" data-lightbox="image"><img class="image_fade" th:src="${post.products[0].imageUrl}" alt="image"/></a>
+								</div>
+								<div class="entry-c">
+									<div class="entry-title">
+										<h2><a th:href="${webContext.homeUrl + '/post/' + post.slug}" th:text="${post.title}"></a></h2>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li><i class="icon-calendar3"></i><span th:text="${post.dateDisplay}"></span> </li>
+									</ul>
+									<div class="entry-content">
+										<a th:href="${webContext.homeUrl + '/post/' + post.slug}" class="more-link">Click to Read</a>
+									</div>
+								</div>
 							</div>
 						</div>
 
@@ -133,8 +81,8 @@
 					<!-- Pagination
 					============================================= -->
 					<ul class="pager nomargin">
-						<li class="previous"><a href="#">&larr; Older</a></li>
-						<li class="next"><a href="#">Newer &rarr;</a></li>
+						<li class="previous"><span th:if="${isFirst} == false"><a th:href="${webContext.homeUrl + '/blog(pageNum=${previousPageNum})'}">&larr; Previous</a></span></li>
+						<li class="next"><span th:if="${isLast} == false"><a th:href="${webContext.homeUrl + '/blog(pageNum=${nextPageNum})'}">Next &rarr;</a></span></li>
 					</ul><!-- .pager end -->
 
 				</div>
