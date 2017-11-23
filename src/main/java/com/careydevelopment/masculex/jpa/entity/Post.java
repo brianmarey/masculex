@@ -39,7 +39,7 @@ public class Post {
 	@Column(name="active")
 	private int active;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="post")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="post")
 	private List<Product> products;
 	
 	public Long getId() {

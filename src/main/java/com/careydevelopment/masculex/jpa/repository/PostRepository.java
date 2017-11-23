@@ -1,5 +1,7 @@
 package com.careydevelopment.masculex.jpa.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +16,7 @@ public interface PostRepository extends BaseRepository<Post, Long> {
 	
     @Query("SELECT p FROM Post p order by p.date desc")
     Page<Post> findPosts(Pageable page);
+    
+    @Query("SELECT p FROM Post p order by p.date desc")
+    List<Post> findAllPosts();
 }
