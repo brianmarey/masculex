@@ -1,5 +1,8 @@
 package com.careydevelopment.masculex.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,10 +42,19 @@ public class BlogController {
         	
         	int page = getPage(pageNum);
         	Pageable pageable = new PageRequest(page, 20);
-        	Page<Post> posts = postRepository.findPosts(pageable);
+        	Page<Post> postsPage = postRepository.findPosts(pageable);    
+        	
+        	//add only posts with a number of products
+        	List<Post> posts = new ArrayList<Post>();
+        	for (Post post : postsPage) {
+        		if (post.getProducts() != null && post.getProducts().size() > 17) {
+        			posts.add(post);
+        		}
+        	}
+        	
         	model.addAttribute("posts", posts);
         	
-        	setPagination(posts,model,page);
+        	setPagination(postsPage,model,page);
         	
         	return "blog";
     	}      

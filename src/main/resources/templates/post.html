@@ -26,8 +26,8 @@
 			</div>
 
 		</section><!-- #page-title end -->
-		
-		<div style="display:none" itemscope="true" itemtype="http://schema.org/Article">
+		<div itemscope="true" itemtype="http://schema.org/Article">
+		<div style="display:none">
 			<span itemprop="name" th:text="${post.title}"></span>
 			<link itemprop="mainEntityOfPage" th:href="${webContext.homeUrl + '/post/' + post.slug}" />
 			<span itemprop="url" th:text="${webContext.homeUrl + '/post/' + post.slug}"></span>
@@ -65,14 +65,10 @@
 								<li><i class="icon-calendar3"></i><span th:text="${post.dateDisplay}"></span></li>
 							</ul><!-- .entry-meta end -->
 
+							<div itemprop="articleBody">
 							<div th:each="product,iterStatus : ${post.products}">
 								<div itemscope="true" itemtype="http://schema.org/Product">
-								<div style="display:none" th:if="${product.lowestPrice != null}">
-									<span itemprop="offers" itemscope="true" itemtype="http://schema.org/Offer">
-										<span itemprop="price" th:text="${product.lowestPriceDecimal}"></span>
-										<span itemprop="priceCurrency">USD</span>
-									</span>
-								</div>
+
 									<!-- Entry Title
 									============================================= -->
 									<div class="entry-title">
@@ -84,15 +80,21 @@
 									</div>
 									<!-- Entry Content
 									============================================= -->
-									<div class="entry-content notopmargin" style="margin-bottom:60px">
+									<div class="entry-content notopmargin" style="margin-bottom:80px">
 										<p itemprop="description" th:utext="${product.description}" style="margin-bottom:20px;font-size:18px"></p>
 										<a th:href="${product.link}" class="button button-xlarge tright" target="_blank" style="margin-left:0px">Learn More<i class="icon-circle-arrow-right"></i></a>
 										<!-- Post Single - Content End -->
 									</div>
+									<div style="display:none" th:if="${product.lowestPrice != null}">
+										<span itemprop="offers" itemscope="true" itemtype="http://schema.org/Offer">
+											<span itemprop="price" th:text="${product.lowestPriceDecimal}"></span>
+											<span itemprop="priceCurrency">USD</span>
+										</span>
+									</div>
 								</div>
 								<div class="clear"></div>
 							</div>
-						
+							</div>
 						</div>
 
 					</div>
@@ -102,7 +104,7 @@
 			</div>
 
 		</section><!-- #content end -->
-
+		</div>
 		<div th:include="fragments/footer :: outerfooter" th:remove="tag"></div>
 
 	</div><!-- #wrapper end -->

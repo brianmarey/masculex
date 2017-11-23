@@ -81,8 +81,8 @@
 					<!-- Pagination
 					============================================= -->
 					<ul class="pager nomargin">
-						<li class="previous"><span th:if="${isFirst} == false"><a th:href="${webContext.homeUrl + '/blog(pageNum=${previousPageNum})'}">&larr; Previous</a></span></li>
-						<li class="next"><span th:if="${isLast} == false"><a th:href="${webContext.homeUrl + '/blog(pageNum=${nextPageNum})'}">Next &rarr;</a></span></li>
+						<li class="previous"><span th:if="${isFirst} == false"><a th:href="${webContext.homeUrl + '/blog?pageNum=' + previousPageNum}">&larr; Previous</a></span></li>
+						<li class="next"><span th:if="${isLast} == false"><a th:href="${webContext.homeUrl + '/blog?pageNum=' + nextPageNum}">Next &rarr;</a></span></li>
 					</ul><!-- .pager end -->
 
 				</div>
