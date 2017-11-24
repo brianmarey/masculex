@@ -44,9 +44,12 @@ public class BlogController {
         	Pageable pageable = new PageRequest(page, 20);
         	Page<Post> postsPage = postRepository.findPosts(pageable);    
         	
+        	//add only posts with a number of products
         	List<Post> posts = new ArrayList<Post>();
         	for (Post post : postsPage) {
-        		posts.add(post);
+        		if (post.getProducts() != null && post.getProducts().size() > 17) {
+        			posts.add(post);
+        		}
         	}
         	
         	model.addAttribute("posts", posts);
