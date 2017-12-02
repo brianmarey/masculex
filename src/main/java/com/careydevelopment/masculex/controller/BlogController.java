@@ -42,7 +42,7 @@ public class BlogController {
         	
         	int page = getPage(pageNum);
         	Pageable pageable = new PageRequest(page, 20);
-        	Page<Post> postsPage = postRepository.findPosts(pageable);    
+        	Page<Post> postsPage = postRepository.findPosts(pageable, context.getId());    
         	
         	//add only posts with a number of products
         	List<Post> posts = new ArrayList<Post>();

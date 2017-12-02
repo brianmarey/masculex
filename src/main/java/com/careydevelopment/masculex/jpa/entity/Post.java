@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -38,6 +40,10 @@ public class Post {
 	
 	@Column(name="active")
 	private int active;
+	
+	@ManyToOne
+	@JoinColumn(name="context_id")
+	private Context context;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="post")
 	private List<Product> products;
@@ -120,4 +126,13 @@ public class Post {
 		
 		return display;
 	}
+
+	public Context getContext() {
+		return context;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
+	}
+	
 }

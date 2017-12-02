@@ -14,9 +14,9 @@ public interface PostRepository extends BaseRepository<Post, Long> {
 	@Query("SELECT p FROM Post p where p.slug=:slug")
 	Post fetchBySlug(@Param("slug") String slug);
 	
-    @Query("SELECT p FROM Post p order by p.date desc")
-    Page<Post> findPosts(Pageable page);
+    @Query("SELECT p FROM Post p where p.context.id =:contextId order by p.date desc")
+    Page<Post> findPosts(Pageable page, @Param("contextId") long contextId);
     
-    @Query("SELECT p FROM Post p order by p.date desc")
-    List<Post> findAllPosts();
+    @Query("SELECT p FROM Post p where p.context.id =:contextId order by p.date desc")
+    List<Post> findAllPosts(@Param("contextId") long contextId);
 }

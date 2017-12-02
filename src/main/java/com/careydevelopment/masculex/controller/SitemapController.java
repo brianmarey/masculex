@@ -35,7 +35,7 @@ public class SitemapController {
     	} else {
     		model.addAttribute("webContext", context);
     		
-        	List<Post> allPosts = postRepository.findAllPosts();            	
+        	List<Post> allPosts = postRepository.findAllPosts(context.getId());            	
         	model.addAttribute("posts", allPosts);
         	        	
         	return "sitemap";
