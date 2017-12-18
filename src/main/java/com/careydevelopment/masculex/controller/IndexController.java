@@ -19,11 +19,15 @@ public class IndexController {
     @RequestMapping(value = "/{contextName}", method=RequestMethod.GET)
     public String index(@PathVariable String contextName, Model model) {
     	
+		if (contextName.equals("travel")) {
+			return contextName;
+		}
+    	
     	Context context = contextRepository.fetchByName(contextName);
     	
     	if (context == null) {
     		return "404";
-    	} else {
+    	} else {    		
         	model.addAttribute("webContext", context);        	
             return "index";
     	}    	
